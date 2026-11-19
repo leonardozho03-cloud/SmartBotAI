@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bot IA | Tu nuevo empleado a tiempo completo</title>
+    <!-- Tipografía moderna similar a la del diseño -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1cb5e0 0%, #000851 100%);
+            --brand-gradient: linear-gradient(135deg, #22c1c3 0%, #1659c7 50%, #103783 100%);
+            --green-accent: #4cd137;
+            --text-dark: #111827;
+            --text-muted: #374151;
+            --white: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.96);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--brand-gradient);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navegación */
+        header {
+            padding: 20px 0;
+            color: var(--white);
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 24px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 64px 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        /* Hero Section */
+        .hero {
+            color: var(--white);
+            padding: 40px 0 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--white);
+            color: #1659c7;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Contenedor de imagen estilo orgánico/trébol del PDF */
+        .image-frame {
+            background: var(--white);
+            border-radius: 42% 58% 52% 48% / 45% 45% 55% 55%;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: auto;
+            border-radius: inherit;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Secciones Blancas / Tarjetas */
+        .section-light {
+            background-color: var(--white);
+            border-radius: 32px;
+            margin: 20px auto;
+            padding: 60px 48px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-title.center {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .white-text {
+            color: var(--white);
+        }
+
+        .info-block {
+            margin-bottom: 24px;
+        }
+
+        .info-block h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1659c7;
+            margin-bottom: 8px;
+        }
+
+        /* Pilares / Beneficios */
+        .pillar-card {
+            background: var(--card-bg);
+            padding: 32px 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .pillar-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        /* Servicios */
+        .services-list {
+            list-style: none;
+        }
+
+        .services-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .services-list li::before {
+            content: "✓";
+            color: #1659c7;
+            font-weight: 800;
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        /* Planes y Precios */
+        .plan-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .plan-card.featured {
+            border: 3px solid var(--green-accent);
+            transform: scale(1.03);
+        }
+
+        .badge {
+            background: var(--green-accent);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            align-self: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .plan-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1659c7;
+            margin: 12px 0 20px;
+        }
+
+        .plan-price span {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .plan-features li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .plan-features li::before {
+            content: "•";
+            color: #1659c7;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .plan-ideal {
+            background: #f3f4f6;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer / Contacto */
+        footer {
+            background: rgba(0, 8, 40, 0.45);
+            color: var(--white);
+            padding: 60px 0 40px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        footer p, footer a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .grid-2, .grid-3, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .plan-card.featured {
+                transform: none;
+            }
+            .section-light {
+                padding: 40px 24px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="container">
+        <nav class="nav-bar">
+            <div class="logo-text">Smart Bot IA</div>
+            <div class="nav-links">
+                <a href="#nosotros">Quiénes somos</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#planes">Planes</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO PRINCIPAL -->
+    <section class="hero">
+        <div class="container grid-2">
+            <div>
+                <h1>Smart Bot IA: Tu nuevo empleado a tiempo completo</h1>
+                <p>
+                    Atiende las consultas frecuentes de tu negocio las 24 horas por WhatsApp Business, 
+                    captura los datos básicos del cliente y te avisa cuando necesites intervenir 
+                    personalmente para cerrar reservaciones o resolver casos complejos.
+                </p>
+                <a href="#planes" class="btn-cta">Ver Planes y Precios</a>
+            </div>
+            <div class="image-frame">
+                <!-- Reemplaza 'logo-smartbot.png' con la imagen de tu mascota robot -->
+                <img src="logo-smartbot.png" alt="Mascota SmartBot AI">
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS / QUÉ OFRECEMOS / CÓMO TE AYUDA -->
+    <section id="nosotros" class="container">
+        <div class="section-light grid-2">
+            <div>
+                <div class="info-block">
+                    <h2 class="section-title">Quiénes somos</h2>
+                    <p>
+                        Somos un equipo de jóvenes emprendedores y estudiantes, con la misión de ofrecer 
+                        soluciones tecnológicas accesibles que ayuden a los negocios locales de nuestra región 
+                        a atender mejor a sus clientes, sin que tengan que invertir grandes sumas de dinero 
+                        o contratar personal adicional.
+                    </p>
+                </div>
+
+                <div class="info-block">
+                    <h3>Qué ofrecemos</h3>
+                    <p>
+                        Ofrecemos tranquilidad: que ningún mensaje se quede sin atender, sin que tú tengas 
+                        que estar pegado al teléfono todo el día.
+                    </p>
+                </div>
+
+                <div class="info-block">
+                    <h3>Cómo te ayuda</h3>
+                    <p>
+                        Nos encargamos de lo repetitivo para que tú te enfoques en lo que solo tú puedes dar: 
+                        la calidez y el cuidado que hacen único a tu negocio.
+                    </p>
+                </div>
+            </div>
+
+            <div class="image-frame">
+                <!-- Reemplaza con la foto del equipo caminando en oficina -->
+                <img src="oficina.png" alt="Equipo Smart Bot IA">
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ TRABAJAR CON NOSOTROS -->
+    <section id="beneficios" class="container">
+        <div class="grid-2" style="margin-bottom: 48px;">
+            <div class="image-frame">
+                <!-- Reemplaza con la foto de diversidad/inclusión -->
+                <img src="equipo.jpeg" alt="Diversidad e inclusión">
+            </div>
+            <div class="white-text">
+                <h2 class="section-title white-text">Por qué trabajar con nosotros</h2>
+                <!-- NOTA: En tu PDF original aquí aparece texto de plantilla; reemplázalo con tus valores reales -->
+                <p>
+                    Creemos en la tecnología cercana, humana y accesible. Trabajamos mano a mano con cada 
+                    negocio local para adaptar la inteligencia artificial a su esencia y ritmo de trabajo.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid-3">
+            <div class="pillar-card">
+                <span class="pillar-icon">🕒</span>
+                <h3>Disponibilidad continua</h3>
+                <p>Tus clientes reciben respuesta a cualquier hora, incluso fuera de horario.</p>
+            </div>
+
+            <div class="pillar-card">
+                <span class="pillar-icon">💬</span>
+                <h3>Personalización total</h3>
+                <p>No usas respuestas genéricas. El asistente habla como tu negocio.</p>
+            </div>
+
+            <div class="pillar-card">
+                <span class="pillar-icon">🛡️</span>
+                <h3>Sin riesgos</h3>
+                <p>Sin contratos forzosos. Si no te sirve, cancelas cuando quieras.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="container">
+        <div class="section-light grid-2">
+            <div>
+                <h2 class="section-title">Servicios</h2>
+                <ul class="services-list">
+                    <li>Asistente Virtual para WhatsApp</li>
+                    <li>Configuración y entrenamiento</li>
+                    <li>Monitoreo y reportes</li>
+                    <li>Actualizaciones y ajustes</li>
+                    <li>Capacitación y acompañamiento</li>
+                    <li>Demostración sin costo</li>
+                    <li>Producción de vídeo</li>
+                </ul>
+            </div>
+            <div class="image-frame">
+                <!-- Reemplaza con la foto de atención a clientes con diadema -->
+                <img src="servicios.jpeg" alt="Atención y soporte SmartBot AI">
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes" class="container">
+        <h2 class="section-title center white-text">Planes</h2>
+        <div class="grid-3">
+            
+            <!-- PLAN BÁSICO -->
+            <div class="plan-card">
+                <div>
+                    <div class="plan-name">Plan Básico</div>
+                    <div class="plan-price">$899 <span>MXN/mes</span></div>
+                    <ul class="plan-features">
+                        <li>Asistente configurado para WhatsApp Business</li>
+                        <li>Respuestas a 10 preguntas frecuentes personalizadas</li>
+                        <li>Captura de datos: nombre, fecha y necesidad</li>
+                        <li>Derivación de consultas complejas con alerta</li>
+                        <li>Configuración inicial y entrenamiento básico</li>
+                        <li>1 cambio de información al mes sin costo</li>
+                        <li>Monitoreo básico</li>
+                        <li>Sin contrato de permanencia</li>
+                    </ul>
+                </div>
+                <div class="plan-ideal">
+                    <strong>Ideal para:</strong> Negocios pequeños que quieren dejar de perder mensajes sin respuesta.
+                </div>
+            </div>
+
+            <!-- PLAN ESTÁNDAR -->
+            <div class="plan-card featured">
+                <div>
+                    <span class="badge">El equilibrio perfecto</span>
+                    <div class="plan-name">Plan Estándar</div>
+                    <div class="plan-price">$1,299 <span>MXN/mes</span></div>
+                    <ul class="plan-features">
+                        <li><strong>Todo lo del Básico, más:</strong></li>
+                        <li>Respuestas a hasta 25 preguntas frecuentes</li>
+                        <li>2 cambios de información al mes sin costo</li>
+                        <li>Reportes semanales de consultas recibidas</li>
+                        <li>Horarios de atención diferenciados</li>
+                        <li>Respaldo de respuestas personalizado</li>
+                        <li>Prioridad en ajustes y soporte</li>
+                    </ul>
+                </div>
+                <div class="plan-ideal">
+                    <strong>Ideal para:</strong> Restaurantes y hostales que reciben muchas consultas diarias.
+                </div>
+            </div>
+
+            <!-- PLAN PREMIUM -->
+            <div class="plan-card">
+                <div>
+                    <span class="badge" style="background:#1659c7;">Máxima cobertura</span>
+                    <div class="plan-name">Plan Premium</div>
+                    <div class="plan-price">$1,799 <span>MXN/mes</span></div>
+                    <ul class="plan-features">
+                        <li><strong>Todo lo del Estándar, más:</strong></li>
+                        <li>Preguntas frecuentes ilimitadas</li>
+                        <li>Hasta 4 cambios de información al mes</li>
+                        <li>Reportes mensuales con análisis de consultas y horarios pico</li>
+                        <li>Respuestas con menús, listas de precios y enlaces</li>
+                        <li>Revisión y actualización de flujos cada mes</li>
+                        <li>Soporte prioritario en horario extendido</li>
+                        <li>Incorporación de nuevas preguntas en menos de 24 horas</li>
+                    </ul>
+                </div>
+                <div class="plan-ideal">
+                    <strong>Ideal para:</strong> Agencias de tours y negocios con servicios variados y temporadas.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACTO / FOOTER -->
+    <footer id="contacto">
+        <div class="container footer-grid">
+            <div>
+                <h3>Smart Bot IA</h3>
+                <p>Soluciones tecnológicas accesibles para automatizar la atención al cliente en WhatsApp Business.</p>
+            </div>
+            <div>
+                <h3>Contáctanos</h3>
+                <p>Calle 8, #3-45. Cancún, Quintana Roo</p>
+                <a href="tel:9984567890">Teléfono: (998) 456-7890</a>
+                <a href="tel:3214567890">Móvil: (321) 456-7890</a>
+                <a href="mailto:online@smartbotia.com.mx">online@smartbotia.com.mx</a>
+            </div>
+            <div>
+                <h3>Nuestras Redes</h3>
+                <a href="#">Facebook: Smart Bot.IA</a>
+                <a href="#">Instagram: Smart Bot IA Oficial</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
